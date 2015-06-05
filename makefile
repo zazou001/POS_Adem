@@ -4,7 +4,7 @@ SDIR=src
 ODIR=obj
 
 all :
-	$(JC) -d $(ODIR) src/Main.java src/Login.java
+	$(JC) -d $(ODIR) src/Main.java src/Login.java src/GuiPOS.java src/POS.java
 
 clean :
 	rm -f $(ODIR)/*.class
