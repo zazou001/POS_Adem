@@ -112,6 +112,9 @@ public class Login extends JFrame
 	}
 	private int getGroup(String user, String pass)
 	{
-		return 2;
+		if(user.equals("adem"))
+			return 2;
+		else
+			return 0;
 	}
 }
