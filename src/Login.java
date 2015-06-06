@@ -92,7 +92,7 @@ public class Login extends JFrame
         });
         
 		// Title / Size / Location
-		setTitle("- ADEM POS CONNEXION -");
+		setTitle("- ADEM POS -");
         setSize(300, 120);
         setLocationRelativeTo(null);
         
