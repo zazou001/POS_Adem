@@ -24,6 +24,8 @@ import java.awt.event.*;
 import java.awt.image.BufferStrategy;
 import javax.swing.*;
 import javax.swing.ImageIcon;
+import java.util.List;
+import java.util.ArrayList;
 
 public class GuiPOS extends JFrame
 {
@@ -39,7 +41,6 @@ public class GuiPOS extends JFrame
 		POSfunc = new POS();
 		this.grp = grp;
 		initGUI();
-		System.out.println("- LOGIN -");
     }
     
     private void initGUI()
@@ -47,11 +48,11 @@ public class GuiPOS extends JFrame
 		JTabbedPane tabbedPane = new JTabbedPane();
 		ImageIcon noIcon = new ImageIcon("img/no.gif", "NO_ICON");
 		
+		// ------------------------- PANEL 1 -------------------------
 		final JPanel panel1 = new JPanel();
         panel1.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         panel1.setLayout(new GridLayout(16,1));
 		
-		// ------------------------- PANEL 1 -------------------------
 		final JLabel panel1label1 = new JLabel("Nom :");
 		final JTextField panel1nom = new JTextField(42);
 		final JLabel panel1label2 = new JLabel("Prenom :");
@@ -81,6 +82,44 @@ public class GuiPOS extends JFrame
 		
 		// ------------------------- PANEL 2 -------------------------
 		final JPanel panel2 = new JPanel();
+		final JPanel panel21 = new JPanel();
+		final JPanel panel22 = new JPanel();
+        panel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        panel2.setLayout(new BorderLayout());
+        panel21.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        panel22.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        panel21.setLayout(new GridLayout(16, 4));
+        panel22.setLayout(new GridLayout(1, 1));
+        
+        List<JButton> panel2btn = new ArrayList<JButton>();
+        List<String> produitList = new ArrayList<String>();
+        // POUR TEST
+        for(int i=0; i<42; i++)
+		{
+			produitList.add("PRODUIT" + i);	
+		}
+        for(int i=0; i<produitList.size(); i++)
+		{
+			panel2btn.add(new JButton(produitList.get(i)));	
+		}
+        for(int i=0; i<panel2btn.size(); i++)
+		{
+			panel21.add(panel2btn.get(i));	
+		}
+        /*
+        JList<String> panel2list = new JList<String>();
+		panel2list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+		panel2list.setLayoutOrientation(JList.VERTICAL_WRAP);
+		panel2list.setVisibleRowCount(5);
+        panel21.add(panel2list);*/
+
+		final JButton panel2valider = new JButton("Valider");
+		panel22.add(panel2valider);
+        
+		panel2.add(panel21, BorderLayout.NORTH);
+		panel2.add(panel22, BorderLayout.SOUTH);
+		
+		
 		final JPanel panel3 = new JPanel();
 		final JPanel panel4 = new JPanel();
 		final JPanel panel5 = new JPanel();

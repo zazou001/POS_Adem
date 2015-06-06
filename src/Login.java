@@ -35,7 +35,6 @@ public class Login extends JFrame
     Login()
     {
 		initGUI();
-		System.out.println("- LOGIN -");
     }
     
     /*
