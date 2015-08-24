@@ -33,13 +33,19 @@ public class GuiPOS extends JFrame
 	// warning: [serial] serializable class GuiPOS has no definition of serialVersionUID
 	private static final long serialVersionUID = 42L;
 	
+	private String user;
+	private String pass;
 	private int grp = 0;
 	private POS POSfunc;
+	
+	
 	
     GuiPOS(String user, String pass, int grp)
     {
 		POSfunc = new POS();
 		this.grp = grp;
+		this.user = user;
+		this.pass = pass;
 		initGUI();
     }
     
@@ -47,6 +53,12 @@ public class GuiPOS extends JFrame
     {
 		JTabbedPane tabbedPane = new JTabbedPane();
 		ImageIcon noIcon = new ImageIcon("img/no.gif", "NO_ICON");
+		ImageIcon icon1 = new ImageIcon(new ImageIcon("img/inscriptions.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+		ImageIcon icon2 = new ImageIcon(new ImageIcon("img/snacks.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+		ImageIcon icon3 = new ImageIcon(new ImageIcon("img/sandwichs.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+		ImageIcon icon4 = new ImageIcon(new ImageIcon("img/stocks.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+		ImageIcon icon5 = new ImageIcon(new ImageIcon("img/trez.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+		ImageIcon icon6 = new ImageIcon(new ImageIcon("img/list.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
 		
 		// ------------------------- PANEL 1 -------------------------
 		final JPanel panel1 = new JPanel();
@@ -84,6 +96,16 @@ public class GuiPOS extends JFrame
 		final JPanel panel2 = new JPanel();
 		final JPanel panel21 = new JPanel();
 		final JPanel panel22 = new JPanel();
+		// LISTE
+		final String[] panel2tablecolNames = { " Noms ", " Prix / µ ", " Nombre " };
+		final Object[][] panel2tabledata = {};
+		final JTable panel2table = new JTable(panel2tabledata, panel2tablecolNames);
+		final JPanel panel2l = new JPanel();
+        panel2l.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        panel2l.setLayout(new BorderLayout());
+		panel2l.add(panel2table.getTableHeader(), BorderLayout.NORTH);
+		panel2l.add(panel2table, BorderLayout.SOUTH);
+		
         panel2.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         panel2.setLayout(new BorderLayout());
         panel21.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -106,19 +128,23 @@ public class GuiPOS extends JFrame
 		{
 			panel21.add(panel2btn.get(i));	
 		}
-        /*
-        JList<String> panel2list = new JList<String>();
-		panel2list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-		panel2list.setLayoutOrientation(JList.VERTICAL_WRAP);
-		panel2list.setVisibleRowCount(5);
-        panel21.add(panel2list);*/
+        for(int i=0; i<panel2btn.size(); i++)
+		{
+			panel2btn.get(i).addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent event)
+				{
+					
+				}
+			});
+		}
 
 		final JButton panel2valider = new JButton("Valider");
 		panel22.add(panel2valider);
         
 		panel2.add(panel21, BorderLayout.NORTH);
+		panel2.add(panel2l, BorderLayout.CENTER);
 		panel2.add(panel22, BorderLayout.SOUTH);
-		
 		
 		final JPanel panel3 = new JPanel();
 		final JPanel panel4 = new JPanel();
@@ -127,22 +153,22 @@ public class GuiPOS extends JFrame
 		
 		// A VOIR > tabbedPane.setMnemonicAt(0, KeyEvent.VK_0);
 		// PANEL 1
-		tabbedPane.addTab("Inscription", noIcon, panel1,"Inscriptions de Membres");
+		tabbedPane.addTab("Inscription", icon1, panel1,"Inscriptions de Membres");
 		// PANEL 2
-		tabbedPane.addTab("Snacks / Boisson", noIcon, panel2,"Ventes de Snacks et Boissons et Autres");
+		tabbedPane.addTab("Snacks / Boisson", icon2, panel2,"Ventes de Snacks et Boissons et Autres");
 		// PANEL 3
-		tabbedPane.addTab("Sandwichs", noIcon, panel3,"Ventes de Sandwichs");
+		tabbedPane.addTab("Sandwichs", icon3, panel3,"Ventes de Sandwichs");
 		// PANEL 4
 		if(grp > 0)
 		{
-			tabbedPane.addTab("Stocks", noIcon, panel4,"Gestion des Stocks");
+			tabbedPane.addTab("Stocks", icon4, panel4,"Gestion des Stocks");
 		}
 		if(grp > 1)
 		{
 			// PANEL 5
-			tabbedPane.addTab("Caisse", noIcon, panel5,"Gestion de la Caisse");
+			tabbedPane.addTab("Caisse", icon5, panel5,"Gestion de la Caisse");
 			// PANEL 6		
-			tabbedPane.addTab("Produits", noIcon, panel6,"Gestion des Produits en vente");
+			tabbedPane.addTab("Produits", icon6, panel6,"Gestion des Produits en vente");
 		}
 
 		add(tabbedPane);
