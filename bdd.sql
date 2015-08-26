@@ -165,7 +165,7 @@ DROP TABLE IF EXISTS `stocks`;
 CREATE TABLE `stocks` (
   `idSnack` int(11) NOT NULL,
   `quantite` int(11) NOT NULL,
-  `datestock` date DEFAULT NULL,
+  `datestock` date NOT NULL,
   PRIMARY KEY (`idSnack`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
