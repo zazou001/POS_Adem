@@ -79,10 +79,15 @@ public class Login extends JFrame
 				{
 					JOptionPane.showMessageDialog(null, "User / Pass - Valid");
 					
-					// setVisible ne fonctionne pas < A VOIR !
-					//this.setVisible(false);
-					new GuiPOS(user.getText(),pass.getText(), getGroup(user.getText(),pass.getText()));
-					//this.setVisible(true);
+					setVisible(false);
+					GuiPOS g = new GuiPOS(user.getText(),pass.getText(), getGroup(user.getText(),pass.getText()));
+					
+					// DOIT EFFECTUER UNE PAUSE TANT QUE G N'EST PAS DISPOSE
+					
+					//g.wait();
+					//dispose();
+					
+					setVisible(true);
 				}
 				else
 				{

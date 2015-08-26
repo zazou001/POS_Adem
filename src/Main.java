@@ -1,8 +1,7 @@
 import pkg.connection.*;
-import pkg.DAO.*;
-
-
+//import pkg.dao.*;
 import java.sql.Connection;
+
 public class Main
 {
     public static void main(String[] args){
