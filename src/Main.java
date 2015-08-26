@@ -1,4 +1,6 @@
 import pkg.connection.*;
+import pkg.DAO.*;
+
 
 import java.sql.Connection;
 public class Main

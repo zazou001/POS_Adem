@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.19, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.44, for debian-linux-gnu (armv7l)
 --
 -- Host: localhost    Database: adem
 -- ------------------------------------------------------
--- Server version       5.6.19-0ubuntu0.14.04.1
+-- Server version	5.5.44-0+deb7u1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -156,34 +156,6 @@ INSERT INTO `snack` VALUES (1,101,'Bueno','no.jpg',0.6),(1,102,'Delice','no.jpg'
 UNLOCK TABLES;
 
 --
--- Table structure for table `stock`
---
-
-DROP TABLE IF EXISTS `stock`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `stock` (
-  `TYPE` int(11) NOT NULL,
-  `IMG` text NOT NULL,
-  `NOM` text NOT NULL,
-  `NB` int(11) NOT NULL,
-  `PRIX` float NOT NULL,
-  `NB_VENDU` int(11) NOT NULL,
-  `ID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `stock`
---
-
-LOCK TABLES `stock` WRITE;
-/*!40000 ALTER TABLE `stock` DISABLE KEYS */;
-INSERT INTO `stock` VALUES (1,'mms.jpg','M&M\'s',0,0,8,101),(1,'no.jpg','MARS',0,0,2,102),(1,'no.jpg','PRINCE',500,0,0,103),(2,'icetea.jpg','ICE TEA',38,1,10,201),(2,'no.jpg','COCA',46,1,0,202),(1,'no.jpg','SNICKERS',41,0.5,0,104),(3,'no.jpg','photocopie amicaliste',0,0.03,0,301),(3,'sandwichs_simple.jpg','sandwichs simple',1,2.5,0,302),(2,'zero.jpg','Coca Zero',45,0.5,0,203),(3,'no.jpg','photocopie non amicaliste',49999997,0.05,1,303),(3,'polo.jpg','POLO',45,15,0,304);
-/*!40000 ALTER TABLE `stock` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `stocks`
 --
 
@@ -193,6 +165,7 @@ DROP TABLE IF EXISTS `stocks`;
 CREATE TABLE `stocks` (
   `idSnack` int(11) NOT NULL,
   `quantite` int(11) NOT NULL,
+  `datestock` date DEFAULT NULL,
   PRIMARY KEY (`idSnack`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -272,4 +245,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-02-18 10:38:46
+-- Dump completed on 2015-08-26  7:09:06
