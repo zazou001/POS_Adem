@@ -13,3 +13,10 @@ test : clean all run
 
 run : 
 	cd $(ODIR) && $(JR) -classpath .:mysql-connector-java-5.1.36-bin.jar Main && cd ..
+
+db :
+	mysql -h 88.160.64.214 -u adem -p
+# commandes utiles :
+# show databases;
+# use dbname
+# show tables;
