@@ -60,7 +60,7 @@ public class Login extends JFrame
 		final JLabel label1 = new JLabel("User :");
 		final JTextField user = new JTextField("adem", 42);
 		final JLabel label2 = new JLabel("Pass :");
-		final JTextField pass = new JTextField("adem", 42);
+		final JTextField pass = new JTextField("lbp810", 42);
 		final JButton connexion = new JButton("Connexion");
 		
 		// Add to panel
@@ -113,7 +113,8 @@ public class Login extends JFrame
 	// --------- TODO ---------
 	private boolean verif(String user, String pass)
 	{
-		if(user.equals(pass))
+		
+		if(adem.request("SELECT id FROM utilisateurs WHERE user = '" + user + "' AND passwd = MD5('" + pass + "');") > 0)
 			return true;
 		else
 			return false;

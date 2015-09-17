@@ -64,14 +64,18 @@ public class BDD
 	
 	public int request(String rq)
 	{
+		int columnsNumber = 0;
+		int ret = 0;
+		System.out.println("Request : " + rq);
 		try
 		{
 			resultat = stmt.executeQuery(rq);
 			ResultSetMetaData rsmd = resultat.getMetaData();
-			int columnsNumber = rsmd.getColumnCount();
+			columnsNumber = rsmd.getColumnCount();
 			int i = 0;
 			while ( resultat.next() )
 			{
+				ret++;
 				for(i=1;i<=columnsNumber;i++)
 					System.out.print(" | " + resultat.getString(i));
 				System.out.print("\n");
@@ -87,8 +91,7 @@ public class BDD
 			e.printStackTrace();
 		}
 		
-		
-		return 0;
+		return ret;
 	}	
 }
 
