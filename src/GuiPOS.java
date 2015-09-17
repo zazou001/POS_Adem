@@ -37,15 +37,16 @@ public class GuiPOS extends JFrame
 	private String pass;
 	private int grp = 0;
 	private POS POSfunc;
+	BDD adem;
 	
 	
-	
-    GuiPOS(String user, String pass, int grp)
+    GuiPOS(String user, String pass, int grp, BDD adem)
     {
 		POSfunc = new POS();
 		this.grp = grp;
 		this.user = user;
 		this.pass = pass;
+		this.adem = adem;
 		initGUI();
     }
     

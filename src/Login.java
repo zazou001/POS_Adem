@@ -58,9 +58,9 @@ public class Login extends JFrame
         
         // Label / TextField / Button
 		final JLabel label1 = new JLabel("User :");
-		final JTextField user = new JTextField("adem", 42);
+		final JTextField user = new JTextField("cyril", 42);
 		final JLabel label2 = new JLabel("Pass :");
-		final JTextField pass = new JTextField("lbp810", 42);
+		final JTextField pass = new JTextField("cyril", 42);
 		final JButton connexion = new JButton("Connexion");
 		
 		// Add to panel
@@ -84,7 +84,7 @@ public class Login extends JFrame
 					JOptionPane.showMessageDialog(null, "User / Pass - Valid");
 					
 					setVisible(false);
-					GuiPOS g = new GuiPOS(user.getText(),pass.getText(), getGroup(user.getText(),pass.getText()));
+					GuiPOS g = new GuiPOS(user.getText(),pass.getText(), getGroup(user.getText(),pass.getText()), adem);
 					
 					// DOIT EFFECTUER UNE PAUSE TANT QUE G N'EST PAS DISPOSE
 					
@@ -121,9 +121,6 @@ public class Login extends JFrame
 	}
 	private int getGroup(String user, String pass)
 	{
-		if(user.equals("adem"))
-			return 2;
-		else
-			return 0;
+		return adem.getGroup(user, pass);
 	}
 }

@@ -93,5 +93,27 @@ public class BDD
 		
 		return ret;
 	}	
+	public int getGroup(String user, String pass)
+	{
+		int ret = 0;
+		try
+		{
+			resultat = stmt.executeQuery("SELECT id FROM utilisateurs WHERE user = '" + user + "' AND passwd = MD5('" + pass + "');");
+			ResultSetMetaData rsmd = resultat.getMetaData();
+			while ( resultat.next() )
+			{
+				ret = resultat.getInt("id");
+			}
+		}
+		catch(SQLException se)
+		{
+			se.printStackTrace();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return ret;
+	}
 }
 
