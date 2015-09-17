@@ -4,7 +4,7 @@ SDIR=src
 ODIR=obj
 
 all :
-	$(JC) -d $(ODIR) src/Main.java src/Login.java src/GuiPOS.java src/POS.java src/pkg/connection/Connexion.java
+	$(JC) -d $(ODIR) src/Main.java src/Login.java src/GuiPOS.java src/POS.java src/BDD.java src/pkg/connection/Connexion.java
 
 clean :
 	rm -f $(ODIR)/*.class
@@ -16,6 +16,7 @@ run :
 
 db :
 	mysql -h 88.160.64.214 -u adem -p
+
 # commandes utiles :
 # show databases;
 # use dbname

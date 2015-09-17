@@ -32,8 +32,12 @@ public class Login extends JFrame
 	// warning: [serial] serializable class Login has no definition of serialVersionUID
 	private static final long serialVersionUID = 42L;
 	
+	BDD adem;
+	
     Login()
     {
+		adem = new BDD();
+		adem.connect();
 		initGUI();
     }
     
