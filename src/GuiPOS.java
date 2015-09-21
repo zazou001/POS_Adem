@@ -42,7 +42,7 @@ public class GuiPOS extends JFrame
 	
     GuiPOS(String user, String pass, int grp, BDD adem)
     {
-		POSfunc = new POS();
+		POSfunc = new POS(adem);
 		this.grp = grp;
 		this.user = user;
 		this.pass = pass;
@@ -75,12 +75,20 @@ public class GuiPOS extends JFrame
 		final JComboBox<String> panel1annee = new JComboBox<String>(panel1anneeStrings);
 		final JLabel panel1label4 = new JLabel("");
 		final JButton panel1valider = new JButton("Valider");
+		final JLabel panel1label5 = new JLabel("Année Naissance :");
+		final JTextField panel1naissance = new JTextField(84);
+		final JLabel panel1label6 = new JLabel("Email :");
+		final JTextField panel1email = new JTextField(84);
 		panel1.add(panel1label1);
 		panel1.add(panel1nom);
 		panel1.add(panel1label2);
 		panel1.add(panel1prenom);
 		panel1.add(panel1label3);
 		panel1.add(panel1annee);
+		panel1.add(panel1label5);
+		panel1.add(panel1naissance);
+		panel1.add(panel1label6);
+		panel1.add(panel1email);
 		panel1.add(panel1label4);
 		panel1.add(panel1valider);
 		// Bouton de validation
@@ -89,7 +97,7 @@ public class GuiPOS extends JFrame
             //@Override
             public void actionPerformed(ActionEvent event)
             {
-				POSfunc.ajoutMembre(panel1nom.getText(), panel1prenom.getText(), panel1annee.getSelectedItem().toString());
+				POSfunc.ajoutMembre(panel1nom.getText(), panel1prenom.getText(), panel1annee.getSelectedItem().toString(), panel1naissance.getText(), panel1email.getText());
             }
         });
 		
@@ -116,11 +124,12 @@ public class GuiPOS extends JFrame
         
         List<JButton> panel2btn = new ArrayList<JButton>();
         List<String> produitList = new ArrayList<String>();
-        // POUR TEST
+        /* POUR TEST
         for(int i=0; i<42; i++)
 		{
 			produitList.add("PRODUIT" + i);	
-		}
+		}*/
+		produitList = adem.getSnackList();
         for(int i=0; i<produitList.size(); i++)
 		{
 			panel2btn.add(new JButton(produitList.get(i)));	

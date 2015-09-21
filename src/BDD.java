@@ -1,4 +1,7 @@
 import java.sql.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class BDD
 {
@@ -115,5 +118,53 @@ public class BDD
 		}
 		return ret;
 	}
+	
+	public ArrayList<String> getSnackList()
+	{
+		ArrayList<String> ret = new ArrayList<String>();
+		try
+		{
+			resultat = stmt.executeQuery("SELECT nom FROM snack;");
+			ResultSetMetaData rsmd = resultat.getMetaData();
+			while ( resultat.next() )
+			{
+				ret.add(resultat.getString("nom"));
+			}
+		}
+		catch(SQLException se)
+		{
+			se.printStackTrace();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return ret;
+	}
+	
+	public int ajoutMembreBDD(String nom, String prenom, String annee, String naissance, String email)
+	{
+		int r = 0;
+		try
+		{
+			String query = "INSERT INTO etudiants2014 (nom, prenom, dateDeNaissance, eMail, annee) VALUES ('"  
+																	 + nom + "','"
+																	 + prenom + "','" 
+																	 + naissance + "','" 
+																	 + email + "','" 
+																	 + annee
+																	 +"');";
+			System.out.println(query);
+			r = stmt.executeUpdate(query);
+		}
+		catch(SQLException se)
+		{
+			se.printStackTrace();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return 0;
+	};
 }
-
