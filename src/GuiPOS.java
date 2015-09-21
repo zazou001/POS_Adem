@@ -26,6 +26,7 @@ import javax.swing.*;
 import javax.swing.ImageIcon;
 import java.util.List;
 import java.util.ArrayList;
+import javax.swing.table.*;
 
 public class GuiPOS extends JFrame
 {
@@ -122,13 +123,14 @@ public class GuiPOS extends JFrame
         panel21.setLayout(new GridLayout(16, 4));
         panel22.setLayout(new GridLayout(1, 1));
         
-        List<JButton> panel2btn = new ArrayList<JButton>();
-        List<String> produitList = new ArrayList<String>();
+        final List<JButton> panel2btn = new ArrayList<JButton>();
+        
         /* POUR TEST
         for(int i=0; i<42; i++)
 		{
 			produitList.add("PRODUIT" + i);	
 		}*/
+		List<String> produitList = new ArrayList<String>();
 		produitList = adem.getSnackList();
         for(int i=0; i<produitList.size(); i++)
 		{
@@ -140,11 +142,13 @@ public class GuiPOS extends JFrame
 		}
         for(int i=0; i<panel2btn.size(); i++)
 		{
+			final int z = i;
 			panel2btn.get(i).addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent event)
 				{
-					
+					DefaultTableModel model = (DefaultTableModel) panel2table.getModel();
+					model.addRow(new Object[]{panel2btn.get(z).getText(), "x", "x"});
 				}
 			});
 		}
