@@ -32,6 +32,7 @@ public class Login extends JFrame
 	// warning: [serial] serializable class Login has no definition of serialVersionUID
 	private static final long serialVersionUID = 42L;
 	
+	GuiPOS g;
 	BDD adem;
 	
     Login()
@@ -84,9 +85,8 @@ public class Login extends JFrame
 					JOptionPane.showMessageDialog(null, "User / Pass - Valid");
 					
 					setVisible(false);
-					GuiPOS g = new GuiPOS(user.getText(),pass.getText(), getGroup(user.getText(),pass.getText()), adem);
 					
-					// DOIT EFFECTUER UNE PAUSE TANT QUE G N'EST PAS DISPOSE
+					g = new GuiPOS(user.getText(),pass.getText(), getGroup(user.getText(),pass.getText()), adem);
 					
 					//g.wait();
 					//dispose();

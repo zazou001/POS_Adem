@@ -107,9 +107,17 @@ public class GuiPOS extends JFrame
 		final JPanel panel21 = new JPanel();
 		final JPanel panel22 = new JPanel();
 		// LISTE
+		/*
 		final String[] panel2tablecolNames = { " Noms ", " Prix / µ ", " Nombre " };
 		final Object[][] panel2tabledata = {};
 		final JTable panel2table = new JTable(panel2tabledata, panel2tablecolNames);
+		* */
+		final DefaultTableModel panel2model = new DefaultTableModel();
+		JTable panel2table = new JTable(panel2model);
+		panel2model.addColumn(" Noms ");
+		panel2model.addColumn(" Prix / µ ");
+		panel2model.addColumn(" Nombre ");
+		
 		final JPanel panel2l = new JPanel();
         panel2l.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         panel2l.setLayout(new BorderLayout());
@@ -147,8 +155,7 @@ public class GuiPOS extends JFrame
 			{
 				public void actionPerformed(ActionEvent event)
 				{
-					DefaultTableModel model = (DefaultTableModel) panel2table.getModel();
-					model.addRow(new Object[]{panel2btn.get(z).getText(), "x", "x"});
+					panel2model.addRow(new Object[] { panel2btn.get(z).getText(), "x", "y" });
 				}
 			});
 		}
