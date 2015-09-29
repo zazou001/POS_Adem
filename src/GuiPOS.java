@@ -131,6 +131,9 @@ public class GuiPOS extends JFrame
         panel21.setLayout(new GridLayout(16, 4));
         panel22.setLayout(new GridLayout(1, 2));
         
+        JScrollPane scrollPane = new JScrollPane(panel2table);
+	panel2l.add(scrollPane);
+	
         final List<JButton> panel2btn = new ArrayList<JButton>();
         
         /* POUR TEST
