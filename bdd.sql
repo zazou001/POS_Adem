@@ -51,7 +51,7 @@ CREATE TABLE `utilisateurs` (
 );
 
 /* 	Table vente 
-	Contient la liste des ventes*/;
+	Contient la liste des vente*/;
 DROP TABLE IF EXISTS `vente`;
 CREATE TABLE `vente` (
   `idvente` int NOT NULL AUTO_INCREMENT,
@@ -59,10 +59,17 @@ CREATE TABLE `vente` (
   PRIMARY KEY (`idvente`),
   
   FOREIGN KEY (user) REFERENCES utilisateurs(user)
-  FOREIGN KEY (idFormule) REFERENCES utilisateurs(user)
-  FOREIGN KEY (user) REFERENCES utilisateurs(user)
+  FOREIGN KEY (idVdiver) REFERENCES Vdier(idVdiver)
 );
 
+/* 	Table de ventes diverses : Vdiver 
+	Contient la liste des ventes snack/boisson/divers */;
+DROP TABLE IF EXISTS `Vdiver`;
+CREATE TABLE `Vdiver` (
+  `idVdiver` int NOT NULL,
+  PRIMARY KEY (`idVdiver`),
+  FOREIGN KEY (user) REFERENCES utilisateurs(user)
+);
 
 DROP TABLE IF EXISTS `formule`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
