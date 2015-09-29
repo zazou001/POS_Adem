@@ -55,12 +55,12 @@ public class GuiPOS extends JFrame
     {
 		JTabbedPane tabbedPane = new JTabbedPane();
 		ImageIcon noIcon = new ImageIcon("img/no.gif", "NO_ICON");
-		ImageIcon icon1 = new ImageIcon(new ImageIcon("img/inscriptions.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
-		ImageIcon icon2 = new ImageIcon(new ImageIcon("img/snacks.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
-		ImageIcon icon3 = new ImageIcon(new ImageIcon("img/sandwichs.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
-		ImageIcon icon4 = new ImageIcon(new ImageIcon("img/stocks.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
-		ImageIcon icon5 = new ImageIcon(new ImageIcon("img/trez.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
-		ImageIcon icon6 = new ImageIcon(new ImageIcon("img/list.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+		ImageIcon icon1 = new ImageIcon(new ImageIcon("../img/inscriptions.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+		ImageIcon icon2 = new ImageIcon(new ImageIcon("../img/snacks.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+		ImageIcon icon3 = new ImageIcon(new ImageIcon("../img/sandwichs.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+		ImageIcon icon4 = new ImageIcon(new ImageIcon("../img/stocks.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+		ImageIcon icon5 = new ImageIcon(new ImageIcon("../img/trez.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
+		ImageIcon icon6 = new ImageIcon(new ImageIcon("../img/list.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
 		
 		// ------------------------- PANEL 1 -------------------------
 		final JPanel panel1 = new JPanel();
@@ -132,8 +132,7 @@ public class GuiPOS extends JFrame
         panel22.setLayout(new GridLayout(1, 2));
         
         JScrollPane scrollPane = new JScrollPane(panel2table);
-	panel2l.add(scrollPane);
-	
+		panel2l.add(scrollPane);
         final List<JButton> panel2btn = new ArrayList<JButton>();
         
         /* POUR TEST

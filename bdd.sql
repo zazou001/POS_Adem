@@ -1,97 +1,77 @@
--- MySQL dump 10.13  Distrib 5.5.44, for debian-linux-gnu (armv7l)
---
--- Host: localhost    Database: adem
--- ------------------------------------------------------
--- Server version	5.5.44-0+deb7u1
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `caisse`
---
-
+/* Table caisse */
 DROP TABLE IF EXISTS `caisse`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `caisse` (
-  `idcaisse` int(11) NOT NULL AUTO_INCREMENT,
-  `1cent` int(11) NOT NULL,
-  `2cent` int(11) NOT NULL,
-  `5cent` int(11) NOT NULL,
-  `10cent` int(11) NOT NULL,
-  `20cent` int(11) NOT NULL,
-  `50cent` int(11) NOT NULL,
-  `1euro` int(11) NOT NULL,
-  `2euro` int(11) NOT NULL,
-  `5euro` int(11) NOT NULL,
-  `10euro` int(11) NOT NULL,
-  `20euro` int(11) NOT NULL,
-  `50euro` int(11) NOT NULL,
-  `100euro` int(11) NOT NULL,
-  `200euro` int(11) NOT NULL,
-  `500euro` int(11) NOT NULL,
+  `idcaisse` int( NOT NULL AUTO_INCREMENT,
+  `1cent` int NOT NULL,
+  `2cent` int NOT NULL,
+  `5cent` int NOT NULL,
+  `10cent` int NOT NULL,
+  `20cent` int NOT NULL,
+  `50cent` int NOT NULL,
+  `1euro` int NOT NULL,
+  `2euro` int NOT NULL,
+  `5euro` int NOT NULL,
+  `10euro` int NOT NULL,
+  `20euro` int NOT NULL,
+  `50euro` int NOT NULL,
+  `100euro` int NOT NULL,
+  `200euro` int NOT NULL,
+  `500euro` int NOT NULL,
   `datecaisse` date NOT NULL,
   PRIMARY KEY (`idcaisse`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+);
 
---
--- Dumping data for table `caisse`
---
-
-LOCK TABLES `caisse` WRITE;
-/*!40000 ALTER TABLE `caisse` DISABLE KEYS */;
-/*!40000 ALTER TABLE `caisse` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `etudiants2014`
---
-
-DROP TABLE IF EXISTS `etudiants2014`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `etudiants2014` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+/* 	Table etudiants2015
+	Contient la liste des etudiants.	*/
+DROP TABLE IF EXISTS `etudiants2015`;
+CREATE TABLE `etudiants2015` (
+  `idEtu` int unsigned NOT NULL AUTO_INCREMENT,
   `nom` text NOT NULL,
   `prenom` text NOT NULL,
   `dateDeNaissance` text NOT NULL,
   `eMail` text NOT NULL,
   `annee` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+  PRIMARY KEY (`idEtu`)
+);
 
---
--- Dumping data for table `etudiants2014`
---
+/*	Table utilisateurs
+	Contient la liste des utilisateurs ainsi que le mots de passe	
+	Groupes :
+	1 : User
+	2 : Trez / Stock
+	3 : Root / Prez
+	*/
+DROP TABLE IF EXISTS `utilisateurs`;
+CREATE TABLE `utilisateurs` (
+  `idUser` int NOT NULL AUTO_INCREMENT,
+  `groupe` int NOT NULL DEFAULT '1',
+  `user` varchar(255) NOT NULL DEFAULT '',
+  `passwd` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY `user` (`user`)
+);
 
-LOCK TABLES `etudiants2014` WRITE;
-/*!40000 ALTER TABLE `etudiants2014` DISABLE KEYS */;
-/*!40000 ALTER TABLE `etudiants2014` ENABLE KEYS */;
-UNLOCK TABLES;
+/* 	Table vente 
+	Contient la liste des ventes*/;
+DROP TABLE IF EXISTS `vente`;
+CREATE TABLE `vente` (
+  `idvente` int NOT NULL AUTO_INCREMENT,
+  `datevente` date NOT NULL,
+  PRIMARY KEY (`idvente`),
+  
+  FOREIGN KEY (user) REFERENCES utilisateurs(user)
+  FOREIGN KEY (idFormule) REFERENCES utilisateurs(user)
+  FOREIGN KEY (user) REFERENCES utilisateurs(user)
+);
 
---
--- Table structure for table `formule`
---
 
 DROP TABLE IF EXISTS `formule`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `formule` (
-  `idvente` int(11) NOT NULL,
-  `idSandwich` int(11) NOT NULL,
-  `idSnack` int(11) DEFAULT NULL,
-  `idBoisson` int(11) DEFAULT NULL,
+  `idvente` int NOT NULL,
+  `idSandwich` int NOT NULL,
+  `idSnack` int DEFAULT NULL,
+  `idBoisson` int DEFAULT NULL,
   PRIMARY KEY (`idvente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -183,16 +163,7 @@ UNLOCK TABLES;
 -- Table structure for table `utilisateurs`
 --
 
-DROP TABLE IF EXISTS `utilisateurs`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `utilisateurs` (
-  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
-  `groupe` varchar(255) NOT NULL DEFAULT '',
-  `user` varchar(255) NOT NULL DEFAULT '',
-  `passwd` varchar(255) NOT NULL DEFAULT '',
-  KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -205,23 +176,6 @@ INSERT INTO `utilisateurs` VALUES (1,'utilisateur','adem','a0489b2e90939bba87131
 /*!40000 ALTER TABLE `utilisateurs` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `vente`
---
-
-DROP TABLE IF EXISTS `vente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `vente` (
-  `idvente` int(11) NOT NULL,
-  `datevente` date NOT NULL,
-  PRIMARY KEY (`idvente`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `vente`
---
 
 LOCK TABLES `vente` WRITE;
 /*!40000 ALTER TABLE `vente` DISABLE KEYS */;
