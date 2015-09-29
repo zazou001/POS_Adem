@@ -129,7 +129,7 @@ public class GuiPOS extends JFrame
         panel21.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         panel22.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         panel21.setLayout(new GridLayout(16, 4));
-        panel22.setLayout(new GridLayout(1, 1));
+        panel22.setLayout(new GridLayout(1, 2));
         
         final List<JButton> panel2btn = new ArrayList<JButton>();
         
@@ -139,7 +139,11 @@ public class GuiPOS extends JFrame
 			produitList.add("PRODUIT" + i);	
 		}*/
 		List<String> produitList = new ArrayList<String>();
+		List<Snack> produitListDetails = new ArrayList<Snack>();
+		
 		produitList = adem.getSnackList();
+		produitListDetails = adem.getSnackListDetails();
+		
         for(int i=0; i<produitList.size(); i++)
 		{
 			panel2btn.add(new JButton(produitList.get(i)));	
@@ -151,17 +155,39 @@ public class GuiPOS extends JFrame
         for(int i=0; i<panel2btn.size(); i++)
 		{
 			final int z = i;
+			final Snack s = produitListDetails.get(i);
 			panel2btn.get(i).addActionListener(new ActionListener()
 			{
 				public void actionPerformed(ActionEvent event)
 				{
-					panel2model.addRow(new Object[] { panel2btn.get(z).getText(), "x", "y" });
+					panel2model.addRow(new Object[] { panel2btn.get(z).getText(), s.prix, "1" });
 				}
 			});
 		}
 
 		final JButton panel2valider = new JButton("Valider");
+		final JButton panel2clear = new JButton("Clear");
+		panel2valider.addActionListener(new ActionListener()
+        {
+            //@Override
+            public void actionPerformed(ActionEvent event)
+            {
+			
+			}
+        });
+		panel2clear.addActionListener(new ActionListener()
+        {
+            //@Override
+            public void actionPerformed(ActionEvent event)
+            {
+				while(panel2model.getRowCount()>0)
+				{
+					panel2model.removeRow(0);
+				}
+            }
+        });
 		panel22.add(panel2valider);
+		panel22.add(panel2clear);
         
 		panel2.add(panel21, BorderLayout.NORTH);
 		panel2.add(panel2l, BorderLayout.CENTER);

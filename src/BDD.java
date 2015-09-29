@@ -142,6 +142,34 @@ public class BDD
 		return ret;
 	}
 	
+	public ArrayList<Snack> getSnackListDetails()
+	{
+		ArrayList<Snack> ret = new ArrayList<Snack>();
+		try
+		{
+			resultat = stmt.executeQuery("SELECT * FROM snack;");
+			ResultSetMetaData rsmd = resultat.getMetaData();
+			while ( resultat.next() )
+			{
+				Snack tmp = new Snack();
+				tmp.nom = resultat.getString("nom");
+				tmp.idSnack = resultat.getInt("idSnack");
+				tmp.idType = resultat.getInt("idType");
+				tmp.prix = resultat.getFloat("prix");
+				ret.add(tmp);
+			}
+		}
+		catch(SQLException se)
+		{
+			se.printStackTrace();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return ret;
+	}
+	
 	public int ajoutMembreBDD(String nom, String prenom, String annee, String naissance, String email)
 	{
 		int r = 0;
@@ -168,3 +196,11 @@ public class BDD
 		return 0;
 	};
 }
+
+class Snack
+{
+	public String nom; 
+	public float prix;  
+	public int idType; 
+	public int idSnack;
+};
