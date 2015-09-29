@@ -135,11 +135,6 @@ public class GuiPOS extends JFrame
 		panel2l.add(scrollPane);
         final List<JButton> panel2btn = new ArrayList<JButton>();
         
-        /* POUR TEST
-        for(int i=0; i<42; i++)
-		{
-			produitList.add("PRODUIT" + i);	
-		}*/
 		List<String> produitList = new ArrayList<String>();
 		List<Snack> produitListDetails = new ArrayList<Snack>();
 		
@@ -201,8 +196,37 @@ public class GuiPOS extends JFrame
 		panel2.add(panel2l, BorderLayout.CENTER);
 		panel2.add(panel22, BorderLayout.SOUTH);
 		
+		// ------------------------- PANEL 3 -------------------------
 		final JPanel panel3 = new JPanel();
+		
+		// ------------------------- PANEL 4 --------------------------------------------------
 		final JPanel panel4 = new JPanel();
+		final JPanel panel41 = new JPanel();
+		final JPanel panel42 = new JPanel();
+		
+		panel4.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        panel4.setLayout(new BorderLayout());
+        panel41.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        panel42.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        panel41.setLayout(new GridLayout(produitList.size()/2, 4));
+        panel42.setLayout(new GridLayout(1, 1));
+		
+		final List<JLabel> panel4label = new ArrayList<JLabel>();
+		final List<JFormattedTextField> panel4text = new ArrayList<JFormattedTextField>();
+		
+        for(int i=0; i<produitList.size(); i++)
+		{/*
+			panel4label.add(new JLabel(produitList.get(i)));
+			panel4label.add(new JFormattedTextField());*/
+			// futur : int intValue = Integer.parseInt(integerField.getText().replaceAll(",", ""));
+		}
+		
+		final JButton panel4valider = new JButton("Valider");
+		panel42.add(panel4valider);
+		
+		panel4.add(panel41, BorderLayout.NORTH);
+		panel4.add(panel42, BorderLayout.SOUTH);
+		// ------------------------- FIN PANEL 4 ----------------------------------------------
 		final JPanel panel5 = new JPanel();
 		final JPanel panel6 = new JPanel();
 		
