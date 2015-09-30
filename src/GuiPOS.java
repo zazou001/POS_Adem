@@ -99,6 +99,11 @@ public class GuiPOS extends JFrame
             public void actionPerformed(ActionEvent event)
             {
 				POSfunc.ajoutMembre(panel1nom.getText(), panel1prenom.getText(), panel1annee.getSelectedItem().toString(), panel1naissance.getText(), panel1email.getText());
+				panel1nom.setText("");
+				panel1prenom.setText("");
+				panel1naissance.setText("");
+				panel1email.setText("");
+				panel1annee.setSelectedIndex(0);
             }
         });
 		
