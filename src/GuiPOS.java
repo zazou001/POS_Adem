@@ -212,13 +212,17 @@ public class GuiPOS extends JFrame
         panel42.setLayout(new GridLayout(1, 1));
 		
 		final List<JLabel> panel4label = new ArrayList<JLabel>();
-		final List<JFormattedTextField> panel4text = new ArrayList<JFormattedTextField>();
+		final List<JTextField> panel4text = new ArrayList<JTextField>();
 		
         for(int i=0; i<produitList.size(); i++)
-		{/*
+		{
 			panel4label.add(new JLabel(produitList.get(i)));
-			panel4label.add(new JFormattedTextField());*/
-			// futur : int intValue = Integer.parseInt(integerField.getText().replaceAll(",", ""));
+			panel4text.add(new JTextField());
+		}
+		for(int i=0; i<produitList.size(); i++)
+		{
+			panel41.add(panel4label.get(i));
+			panel41.add(panel4text.get(i));
 		}
 		
 		final JButton panel4valider = new JButton("Valider");
