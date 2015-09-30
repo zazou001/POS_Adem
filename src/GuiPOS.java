@@ -62,6 +62,15 @@ public class GuiPOS extends JFrame
 		ImageIcon icon5 = new ImageIcon(new ImageIcon("../img/trez.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
 		ImageIcon icon6 = new ImageIcon(new ImageIcon("../img/list.png").getImage().getScaledInstance(32, 32, Image.SCALE_DEFAULT));
 		
+		// ------------------------- DATA -------------------------
+		List<String> produitList = new ArrayList<String>();
+		List<Snack> produitListDetails = new ArrayList<Snack>();
+		List<String> sandwichsList = new ArrayList<String>();
+		
+		produitList = adem.getSnackList();
+		produitListDetails = adem.getSnackListDetails();
+		sandwichsList = adem.getSandwichsList();		// TODO
+		
 		// ------------------------- PANEL 1 -------------------------
 		final JPanel panel1 = new JPanel();
         panel1.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
@@ -138,11 +147,6 @@ public class GuiPOS extends JFrame
 		panel2l.add(scrollPane);
         final List<JButton> panel2btn = new ArrayList<JButton>();
         
-		List<String> produitList = new ArrayList<String>();
-		List<Snack> produitListDetails = new ArrayList<Snack>();
-		
-		produitList = adem.getSnackList();
-		produitListDetails = adem.getSnackListDetails();
         panel21.setLayout(new GridLayout(produitList.size()/4, 4));
         panel22.setLayout(new GridLayout(1, 2));
 		
@@ -203,6 +207,36 @@ public class GuiPOS extends JFrame
 		
 		// ------------------------- PANEL 3 -------------------------
 		final JPanel panel3 = new JPanel();
+		final JPanel panel31 = new JPanel();
+		final JPanel panel32 = new JPanel();
+		
+		panel3.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        panel3.setLayout(new BorderLayout());
+        panel31.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        panel32.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        panel31.setLayout(new GridLayout(sandwichsList.size(), 2));
+        panel32.setLayout(new GridLayout(1, 1));
+		
+		final List<JLabel> panel3label = new ArrayList<JLabel>();
+		final List<JTextField> panel3text = new ArrayList<JTextField>();
+		
+        for(int i=0; i<sandwichsList.size(); i++)
+		{
+			panel3label.add(new JLabel(sandwichsList.get(i)));
+			panel3text.add(new JTextField());
+		}
+		for(int i=0; i<sandwichsList.size(); i++)
+		{
+			panel31.add(panel3label.get(i));
+			panel31.add(panel3text.get(i));
+		}
+		
+		final JButton panel3valider = new JButton("Valider");
+		panel32.add(panel3valider);
+		
+		panel3.add(panel31, BorderLayout.NORTH);
+		panel3.add(panel32, BorderLayout.SOUTH);
+		
 		
 		// ------------------------- PANEL 4 --------------------------------------------------
 		final JPanel panel4 = new JPanel();
@@ -236,7 +270,9 @@ public class GuiPOS extends JFrame
 		panel4.add(panel41, BorderLayout.NORTH);
 		panel4.add(panel42, BorderLayout.SOUTH);
 		// ------------------------- FIN PANEL 4 ----------------------------------------------
+		// ------------------------- PANEL 5 --------------------------------------------------
 		final JPanel panel5 = new JPanel();
+		// ------------------------- FIN PANEL 5 ----------------------------------------------
 		final JPanel panel6 = new JPanel();
 		
 		// A VOIR > tabbedPane.setMnemonicAt(0, KeyEvent.VK_0);

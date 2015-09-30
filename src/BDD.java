@@ -195,6 +195,30 @@ public class BDD
 		}
 		return 0;
 	};
+	
+	public ArrayList<String> getSandwichsList()
+	{
+		ArrayList<String> ret = new ArrayList<String>();
+		try
+		{
+			resultat = stmt.executeQuery("SELECT nom FROM sandwich;");
+			ResultSetMetaData rsmd = resultat.getMetaData();
+			while ( resultat.next() )
+			{
+				ret.add(resultat.getString("nom"));
+			}
+		}
+		catch(SQLException se)
+		{
+			se.printStackTrace();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return ret;
+	}
+	
 }
 
 class Snack
