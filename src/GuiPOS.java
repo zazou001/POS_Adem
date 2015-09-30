@@ -128,8 +128,6 @@ public class GuiPOS extends JFrame
         panel2.setLayout(new BorderLayout());
         panel21.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         panel22.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        panel21.setLayout(new GridLayout(16, 4));
-        panel22.setLayout(new GridLayout(1, 2));
         
         JScrollPane scrollPane = new JScrollPane(panel2table);
 		panel2l.add(scrollPane);
@@ -140,6 +138,8 @@ public class GuiPOS extends JFrame
 		
 		produitList = adem.getSnackList();
 		produitListDetails = adem.getSnackListDetails();
+        panel21.setLayout(new GridLayout(produitList.size()/4, 4));
+        panel22.setLayout(new GridLayout(1, 2));
 		
         for(int i=0; i<produitList.size(); i++)
 		{
