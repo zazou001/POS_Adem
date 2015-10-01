@@ -57,13 +57,16 @@ CREATE TABLE `vente` (
   FOREIGN KEY (idProduit) REFERENCES produit(idProduit)
 );
 
-
+/* 	Table stock
+	Contient la quantite de stock de chacun des produits */
 DROP TABLE IF EXISTS `stock`;
 CREATE TABLE `stock` (
   `quantite` int NOT NULL,
   FOREIGN KEY (idProduit) REFERENCES produit(idProduit)
 );
 
+/*	Table sandwichs
+	Contient la liste des noms de sandwichs */
 DROP TABLE IF EXISTS `sandwichs`;
 CREATE TABLE `sandwichs` (
   `idSand` int NOT NULL,
@@ -74,10 +77,10 @@ CREATE TABLE `sandwichs` (
 
 
 LOCK TABLES `utilisateurs` WRITE;
-/*!40000 ALTER TABLE `utilisateurs` DISABLE KEYS */;
 INSERT INTO `utilisateurs` VALUES
-				(1,'utilisateur','adem','a0489b2e90939bba87131f3591fca4fe'),
-				(2,'utilisateur;stock;tresorier','tresor','b92c12c6bbf7c437f5b58eae164d80a1'),
-				(3,'utilisateur;stock','stock','99c1ea929284c97a8aa3f9d40a0abaf9');
+				(1,3,'root','63a9f0ea7bb98050796b649e85481845'),
+				(2,2,'trez','4760acd914e9e26ffe45445bede3db74'),
+				(3,1,'adem','8b372a2d003dc7c6e3ca4c4420c88ea9'),
+				(4,3,'prez','6721346ab707897993e8f040b8dc2b9c');
 UNLOCK TABLES;
 
