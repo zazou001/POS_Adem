@@ -219,15 +219,41 @@ public class GuiPOS extends JFrame
 		
 		final List<JLabel> panel3label = new ArrayList<JLabel>();
 		final List<JTextField> panel3text = new ArrayList<JTextField>();
-		
+		final List<JComboBox<String>> panel3combo = new ArrayList<JComboBox<String>>();
+		String[] panel3etat = {"", "Réservé", "Donné", "Vendu"};
+			
         for(int i=0; i<sandwichsList.size(); i++)
 		{
 			panel3label.add(new JLabel(sandwichsList.get(i)));
+			panel3combo.add(new JComboBox<String>(panel3etat));
 			panel3text.add(new JTextField());
+			
+			final int z = i;
+			//final Snack s = produitListDetails.get(i);
+			panel3combo.get(i).addActionListener
+				(
+                new ActionListener()
+					{
+                    public void actionPerformed(ActionEvent e)
+						{
+							String s = (String) panel3combo.get(z).getSelectedItem();
+							switch (s)
+							{
+								case "Vendu":
+									panel3text.get(z).setText("Vendu");                           
+									break;      
+								case "Donné":
+									panel3text.get(z).setText("Donné");                           
+									break;                       
+							}
+						}
+					}            
+				);
 		}
 		for(int i=0; i<sandwichsList.size(); i++)
 		{
 			panel31.add(panel3label.get(i));
+			panel31.add(panel3combo.get(i));
 			panel31.add(panel3text.get(i));
 		}
 		
