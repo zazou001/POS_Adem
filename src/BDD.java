@@ -101,11 +101,11 @@ public class BDD
 		int ret = 0;
 		try
 		{
-			resultat = stmt.executeQuery("SELECT id FROM utilisateurs WHERE user = '" + user + "' AND passwd = MD5('" + pass + "');");
+			resultat = stmt.executeQuery("SELECT idUser FROM utilisateurs WHERE username = '" + user + "' AND password = MD5('" + pass + "');");
 			ResultSetMetaData rsmd = resultat.getMetaData();
 			while ( resultat.next() )
 			{
-				ret = resultat.getInt("id");
+				ret = resultat.getInt("idUser");
 			}
 		}
 		catch(SQLException se)
@@ -124,7 +124,7 @@ public class BDD
 		ArrayList<String> ret = new ArrayList<String>();
 		try
 		{
-			resultat = stmt.executeQuery("SELECT nom FROM snack;");
+			resultat = stmt.executeQuery("SELECT nom FROM produit;");
 			ResultSetMetaData rsmd = resultat.getMetaData();
 			while ( resultat.next() )
 			{
@@ -147,14 +147,14 @@ public class BDD
 		ArrayList<Snack> ret = new ArrayList<Snack>();
 		try
 		{
-			resultat = stmt.executeQuery("SELECT * FROM snack;");
+			resultat = stmt.executeQuery("SELECT * FROM produit;");
 			ResultSetMetaData rsmd = resultat.getMetaData();
 			while ( resultat.next() )
 			{
 				Snack tmp = new Snack();
 				tmp.nom = resultat.getString("nom");
-				tmp.idSnack = resultat.getInt("idSnack");
-				tmp.idType = resultat.getInt("idType");
+				tmp.idSnack = resultat.getInt("idProduit");
+				tmp.idType = resultat.getInt("type");
 				tmp.prix = resultat.getFloat("prix");
 				ret.add(tmp);
 			}
@@ -175,7 +175,7 @@ public class BDD
 		int r = 0;
 		try
 		{
-			String query = "INSERT INTO etudiants2014 (nom, prenom, dateDeNaissance, eMail, annee) VALUES ('"  
+			String query = "INSERT INTO etudiants (nom, prenom, naissance, email, annee) VALUES ('"  
 																	 + nom + "','"
 																	 + prenom + "','" 
 																	 + naissance + "','" 
@@ -201,7 +201,7 @@ public class BDD
 		ArrayList<String> ret = new ArrayList<String>();
 		try
 		{
-			resultat = stmt.executeQuery("SELECT nom FROM sandwich;");
+			resultat = stmt.executeQuery("SELECT nom FROM sandwichs;");
 			ResultSetMetaData rsmd = resultat.getMetaData();
 			while ( resultat.next() )
 			{
