@@ -79,7 +79,7 @@ CREATE TABLE stock(
 
 CREATE TABLE caisseTresorier(
         idCaisse   Int NOT NULL ,
-        value      Float NOT NULL ,
+        valeur      Float NOT NULL ,
         dateCaisse Datetime NOT NULL ,
         PRIMARY KEY (idCaisse )
 )ENGINE=InnoDB;
@@ -94,7 +94,6 @@ CREATE TABLE vente(
         dateVente Datetime ,
         idUser    Int NOT NULL ,
         idProduit Int NOT NULL ,
-        PRIMARY KEY (idUser ,idProduit )
 )ENGINE=InnoDB;
 
 ALTER TABLE stock ADD CONSTRAINT FK_stock_idProduit FOREIGN KEY (idProduit) REFERENCES produit(idProduit);
