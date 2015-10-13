@@ -44,7 +44,7 @@ CREATE TABLE etudiants(
         idEtu     int (11) Auto_increment  NOT NULL ,
         nom       Varchar (255) ,
         prenom    Varchar (255) ,
-        naissance Date ,
+        naissance Varchar (255) ,
         annee     Varchar (255) ,
         email     Varchar (255) NOT NULL ,
         PRIMARY KEY (idEtu )

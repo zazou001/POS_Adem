@@ -184,6 +184,7 @@ public class GuiPOS extends JFrame
 					System.out.println(panel2model.getValueAt(0, 1));
 					System.out.println(panel2model.getValueAt(0, 2));
 					panel2model.removeRow(0);
+					adem.setVente();
 				}
 			}
         });
