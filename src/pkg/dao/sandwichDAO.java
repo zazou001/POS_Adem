@@ -7,18 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 import pkg.data.*;
 
-public class caisseDAO {
+public class sandwichDAO {
    
-  public caisseDAO(Connection conn){
+  public sandwichDAO(Connection conn){
     super(conn);
   }
    
   /**
   * Méthode de création
-  * @param caisse
+  * @param sandwich
   * @return boolean 
   */
-  public void create(Caisse caisse){
+  public void create(Sandwich sandwich){
 		/*try{
 			PreparedStatement prepareStatement = this.connect.prepareStatement(
 					"INSERT INTO 'brasserie' VALUES(?, ?, ? ,?);");
@@ -35,7 +35,7 @@ public class caisseDAO {
 
   /**
   * Méthode pour effacer
-  * @param caisse
+  * @param sandwich
   * @return boolean 
   */
   public void delete(int id){
@@ -52,7 +52,7 @@ public class caisseDAO {
 
   /**
   * Méthode de mise à jour
-  * @param caisse
+  * @param sandwich
   * @return boolean
   */
   public void update(String table, String colonne, Object champs, int id){
@@ -61,9 +61,9 @@ public class caisseDAO {
   /**
   * Méthode de recherche des informations
   * @param id
-  * @return Caisse
+  * @return Sandwich
   */
-  public Caisse find(int id){
+  public Sandwich find(int id){
 		/*Brasserie brasserie = new Brasserie();      
       
 		try {
@@ -83,9 +83,9 @@ public class caisseDAO {
    
    /**
   * Méthode de recherche de toutes les informations
-  * @return List<Caisse>
+  * @return List<Sandwich>
   */
-  public List<Caisse> findAll(){
+  public List<Sandwich> findAll(){
 		/*List<Brasserie> brasserie = new ArrayList<Brasserie>();      
       
 		try {

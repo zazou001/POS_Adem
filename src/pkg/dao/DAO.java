@@ -5,102 +5,43 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import pkg.data.*;
+import pkg.connection.*;
 
-public class caisseDAO {
-   
-  public caisseDAO(Connection conn){
-    super(conn);
-  }
-   
+public abstract class DAO<T> {
+	
+  public Connection connect = BDD.connect();
+  
   /**
   * Méthode de création
-  * @param caisse
+  * @param obj
   * @return boolean 
   */
-  public void create(Caisse caisse){
-		/*try{
-			PreparedStatement prepareStatement = this.connect.prepareStatement(
-					"INSERT INTO 'brasserie' VALUES(?, ?, ? ,?);");
-					prepareStatement.setInt(1, brasserie.getId());
-					prepareStatement.setString(2, brasserie.getNom());
-					prepareStatement.setString(3, brasserie.getVille());
-					prepareStatement.setString(4, brasserie.getPays());
-					prepareStatement.executeUpdate();
-		} 
-		catch (SQLException e) {
-			e.printStackTrace();
-		}*/
-	}
+  public abstract void create(T obj);
 
   /**
   * Méthode pour effacer
-  * @param caisse
+  * @param obj
   * @return boolean 
   */
-  public void delete(int id){
-		/*try {
-			this.connect.createStatement()
-				.executeUpdate(
-				"DELETE FROM 'brasserie' WHERE idBrasserie =" + id + "; " +
-				"UPDATE 'breuvage' set idBrasserie = null where idBrasserie =" + id + "; ");
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}*/
-	}
+  public abstract void delete(int id);
 
   /**
   * Méthode de mise à jour
-  * @param caisse
+  * @param obj
   * @return boolean
   */
-  public void update(String table, String colonne, Object champs, int id){
-  }
+  public abstract void update(T obj);
 
   /**
   * Méthode de recherche des informations
   * @param id
-  * @return Caisse
+  * @return T
   */
-  public Caisse find(int id){
-		/*Brasserie brasserie = new Brasserie();      
-      
-		try {
-			ResultSet result = this.connect.createStatement().executeQuery(
-					"SELECT * FROM brasserie WHERE idBrasserie = " + id);
-			brasserie = new Brasserie(
-				result.getInt("idBrasserie"),
-				result.getString("nom"),
-				result.getString("ville"),
-				result.getString("pays"));         
-		} 
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return brasserie;*/
-	}
+  public abstract T find(int id);
    
    /**
   * Méthode de recherche de toutes les informations
-  * @return List<Caisse>
+  * @return List<T>
   */
-  public List<Caisse> findAll(){
-		/*List<Brasserie> brasserie = new ArrayList<Brasserie>();      
-      
-		try {
-			ResultSet result = this.connect.createStatement()
-				.executeQuery("SELECT * FROM brasserie");
-			while(result.next())
-				brasserie.add(new Brasserie(
-					result.getInt("idBrasserie"),
-					result.getString("nom"),
-					result.getString("ville"),
-					result.getString("pays")));    
-		} 
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return brasserie;*/
-	}
+  public abstract List<T> findAll();
 }
