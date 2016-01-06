@@ -4,7 +4,7 @@ SDIR=src
 ODIR=obj
 
 all :
-	$(JC) -d $(ODIR) src/Main.java src/Login.java src/GuiPOS.java src/POS.java src/BDD.java src/pkg/connection/Connexion.java
+	$(JC) -d $(ODIR) src/pkg/connection/BDD.java src/Main.java src/Login.java src/GuiPOS.java src/POS.java src/BDD.java src/pkg/data/* src/pkg/dao/snackDAO.java
 
 clean :
 	rm -f $(ODIR)/*.class

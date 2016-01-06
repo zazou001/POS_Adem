@@ -76,11 +76,9 @@ CREATE TABLE `sandwichs` (
 );
 
 
-LOCK TABLES `utilisateurs` WRITE;
 INSERT INTO `utilisateurs` VALUES
 				(1,3,'root','63a9f0ea7bb98050796b649e85481845'),
 				(2,2,'trez','4760acd914e9e26ffe45445bede3db74'),
 				(3,1,'adem','8b372a2d003dc7c6e3ca4c4420c88ea9'),
 				(4,3,'prez','6721346ab707897993e8f040b8dc2b9c');
-UNLOCK TABLES;
 

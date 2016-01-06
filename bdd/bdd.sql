@@ -9,6 +9,7 @@ drop table caisseTresorier;
 drop table etudiants;
 drop table sandwichs;
 drop table produit;
+
 #------------------------------------------------------------
 # Table: utilisateurs
 #------------------------------------------------------------
@@ -31,7 +32,8 @@ CREATE TABLE produit(
         idProduit Int NOT NULL ,
         nom       Varchar (255) NOT NULL ,
         prix      Float NOT NULL ,
-        type      Int NOT NULL ,
+        idType      Int NOT NULL ,
+        image     Blob ,
         PRIMARY KEY (idProduit )
 )ENGINE=InnoDB;
 
@@ -79,7 +81,7 @@ CREATE TABLE stock(
 
 CREATE TABLE caisseTresorier(
         idCaisse   Int NOT NULL ,
-        valeur      Float NOT NULL ,
+        value      Float NOT NULL ,
         dateCaisse Datetime NOT NULL ,
         PRIMARY KEY (idCaisse )
 )ENGINE=InnoDB;
@@ -94,6 +96,7 @@ CREATE TABLE vente(
         dateVente Datetime ,
         idUser    Int NOT NULL ,
         idProduit Int NOT NULL ,
+        PRIMARY KEY (idUser ,idProduit )
 )ENGINE=InnoDB;
 
 ALTER TABLE stock ADD CONSTRAINT FK_stock_idProduit FOREIGN KEY (idProduit) REFERENCES produit(idProduit);

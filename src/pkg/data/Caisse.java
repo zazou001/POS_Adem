@@ -1,20 +1,61 @@
 package pkg.data;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Caisse {
-	private int idcaisse;
-	private int p1cent;
-	private int p2cent;
-	private int p5cent;
-	private int p1euro;
-	private int p2euro;
-	private int b5euro;
-	private int b10euro;
-	private int b20euro;
-	private int b50euro;
-	private int b100euro;
-	private int b200euro;
-	private int b500euro;
-	private Date date;
+    private int idCaisse;
+    private float value;
+	private String dateCaisse;
+
+	Caisse(int idCaisse, float value)
+	{
+		idCaisse = idCaisse;
+		value = value;
+		dateCaisse = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());		
+	}
+	
+	Caisse(float value)
+	{
+		idCaisse = 0;
+		value = value;
+		dateCaisse = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());		
+	}
+	
+	int getIdCaisse()
+	{
+		return idCaisse;
+	}
+	
+	float getValue()
+	{
+		return value;
+	}
+	
+	String getDateCaisse()
+	{
+		return dateCaisse;
+	}
+	
+	void setIdCaisse(int id)
+	{
+		idCaisse = id;
+	}
+	
+	void setValue(float valeur)
+	{
+		value = valeur;
+	}
+	
+	void setDateCaisse(String dateCaisse)
+	{
+		dateCaisse = dateCaisse;
+	}
+	
+	public String toString()
+	{
+		return "";
+	}
 
 }
 	

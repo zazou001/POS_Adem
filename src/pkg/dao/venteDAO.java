@@ -7,35 +7,34 @@ import java.util.ArrayList;
 import java.util.List;
 import pkg.data.*;
 
-public class caisseDAO {
+public class venteDAO {
    
-  public caisseDAO(Connection conn){
+  public venteDAO(Connection conn){
     super(conn);
   }
    
   /**
   * Méthode de création
-  * @param caisse
+  * @param vente
   * @return boolean 
   */
-  public void create(Caisse caisse){
-		/*try{
+  public void create(Vente vente){
+		try{
 			PreparedStatement prepareStatement = this.connect.prepareStatement(
-					"INSERT INTO 'brasserie' VALUES(?, ?, ? ,?);");
-					prepareStatement.setInt(1, brasserie.getId());
-					prepareStatement.setString(2, brasserie.getNom());
-					prepareStatement.setString(3, brasserie.getVille());
-					prepareStatement.setString(4, brasserie.getPays());
+					"INSERT INTO 'vente' VALUES(?, NOW(), ? ,?);");
+					prepareStatement.setInt(1, vente.getIdVente());
+					prepareStatement.setInt(2, vente.getIdUser());
+					prepareStatement.setString(3, vente.getIdSnack());
 					prepareStatement.executeUpdate();
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
-		}*/
+		}
 	}
 
   /**
   * Méthode pour effacer
-  * @param caisse
+  * @param vente
   * @return boolean 
   */
   public void delete(int id){
@@ -52,7 +51,7 @@ public class caisseDAO {
 
   /**
   * Méthode de mise à jour
-  * @param caisse
+  * @param vente
   * @return boolean
   */
   public void update(String table, String colonne, Object champs, int id){
@@ -61,9 +60,9 @@ public class caisseDAO {
   /**
   * Méthode de recherche des informations
   * @param id
-  * @return Caisse
+  * @return Vente
   */
-  public Caisse find(int id){
+  public Vente find(int id){
 		/*Brasserie brasserie = new Brasserie();      
       
 		try {
@@ -83,9 +82,9 @@ public class caisseDAO {
    
    /**
   * Méthode de recherche de toutes les informations
-  * @return List<Caisse>
+  * @return List<Vente>
   */
-  public List<Caisse> findAll(){
+  public List<Vente> findAll(){
 		/*List<Brasserie> brasserie = new ArrayList<Brasserie>();      
       
 		try {
